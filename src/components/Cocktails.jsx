@@ -1,34 +1,46 @@
-import React from 'react'
-import { cocktailLists, mockTailLists } from '../../constants'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import React from "react";
+import { cocktailLists, mockTailLists } from "../../constants";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Cocktails = () => {
-  useGSAP(()=>{
+  useGSAP(() => {
     const paralexTimeline = gsap.timeline({
-      scrollTrigger:{
-        trigger:"#cocktails",
-        start:"top 30%",
-        end:"bottom 80%",
-        scrub:true
-      }
-    })
-    paralexTimeline.from("#c-left-leaf",{x:-100,y:100},0).from("#c-right-leaf",{x:100,y:-100},0)
-  })
+      scrollTrigger: {
+        trigger: "#cocktails",
+        start: "top 30%",
+        end: "bottom 80%",
+        scrub: true,
+      },
+    });
+    paralexTimeline
+      .from("#c-left-leaf", { x: -100, y: 100 }, 0)
+      .from("#c-right-leaf", { x: 100, y: -100 }, 0);
+  });
   return (
-    <section id="cocktails" className='noisy'>
-      <img src="/images/cocktail-left-leaf.png" alt="left-leaf" id='c-left-leaf' />
-      <img src="/images/cocktail-right-leaf.png" alt="right-leaf" id='c-right-leaf' />
+    <section id="cocktails" className="noisy">
+      <img
+        src="/images/cocktail-left-leaf.png"
+        alt="left-leaf"
+        id="c-left-leaf"
+      />
+      <img
+        src="/images/cocktail-right-leaf.png"
+        alt="right-leaf"
+        id="c-right-leaf"
+      />
 
-      <div className='list'>
+      <div className="list">
         <div className="popular">
           <h2>Most popular cocktails:</h2>
           <ul>
-            {cocktailLists.map(drink=>(
+            {cocktailLists.map((drink) => (
               <li key={drink.name}>
-                <div className='md:me-28'>
+                <div className="md:me-28">
                   <h3>{drink.name}</h3>
-                  <p>{drink.country} | {drink.detail}</p>
+                  <p>
+                    {drink.country} | {drink.detail}
+                  </p>
                 </div>
                 <span>- {drink.price}</span>
               </li>
@@ -38,11 +50,13 @@ const Cocktails = () => {
         <div className="loved">
           <h2>Most Loved mocktails:</h2>
           <ul>
-            {mockTailLists.map(drink=>(
+            {mockTailLists.map((drink) => (
               <li key={drink.name}>
-                <div className='me-28'>
+                <div className="me-28">
                   <h3>{drink.name}</h3>
-                  <p>{drink.country} | {drink.detail}</p>
+                  <p>
+                    {drink.country} | {drink.detail}
+                  </p>
                 </div>
                 <span>- {drink.price}</span>
               </li>
@@ -51,7 +65,7 @@ const Cocktails = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Cocktails
+export default Cocktails;
